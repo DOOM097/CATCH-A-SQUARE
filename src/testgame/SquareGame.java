@@ -1,6 +1,7 @@
+package testgame;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -17,7 +18,7 @@ import javafx.util.Duration;
 import java.util.Optional;
 import java.util.Random;
 
-public class SquareGame extends Application {
+public class SquareGame {
 
     private int score = 0;
     private int totalClicks = 0;
@@ -31,8 +32,7 @@ public class SquareGame extends Application {
     private Random random;
     private Timeline timeline;
 
-    @Override
-    public void start(Stage primaryStage) {
+    public void startGame(Stage primaryStage) {
         random = new Random();
 
         // Создание квадратика
@@ -43,9 +43,9 @@ public class SquareGame extends Application {
         // Создание табло для отображения счета и общего количества кликов
         scoreLabel = new Label("                  Score:  0  ");
         scoreLabel.setAlignment(Pos.CENTER);
-        
+
         scoreLabel.setStyle("-fx-font-size: 20px; -fx-border-width: 2 0 2px 0; -fx-border-color: black;");
-        
+
         totalClicksLabel = new Label("                                  |   Total Clicks: 0                  ");
         totalClicksLabel.setAlignment(Pos.CENTER);
         totalClicksLabel.setStyle("-fx-font-size: 20px; -fx-border-width: 2 0 2px 0; -fx-border-color: black;");
@@ -141,13 +141,9 @@ public class SquareGame extends Application {
         if (event.getTarget() == square.getParent()) {
             // Увеличение общего количества кликов при клике на пустое место
             totalClicks++;
-            totalClicksLabel.setText("                                  |   Total Clicks:  "+ totalClicks +"                     ");
+            totalClicksLabel.setText("                                  |   Total Clicks:  " + totalClicks + "                     ");
             totalClicksLabel.setAlignment(Pos.CENTER);
             totalClicksLabel.setStyle("-fx-font-size: 20px; -fx-border-width: 2 0 2px 0; -fx-border-color: black;");
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
